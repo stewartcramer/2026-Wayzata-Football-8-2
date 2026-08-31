@@ -148,19 +148,9 @@
 
 <body>
 
-<img src="wayzata_logo.png" alt="Wayzata Football Logo" class="logo">
-
 <h1>Wayzata Football 8-2 Schedule</h1>
 
 <div id="countdown">Loading next game countdown…</div>
-
-<a href="Wayzata_8-2_Football_Picker.html" class="back-btn">Back to Team 8-2 Home</a>
-
-<button class="print-btn" onclick="window.print()">Print Schedule</button>
-
-<a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID" class="yt-btn" target="_blank">
-  Watch Game Replays on YouTube
-</a>
 
 <table class="schedule" id="scheduleTable">
   <tr>
@@ -168,51 +158,43 @@
     <th>Start</th>
     <th>End</th>
     <th>Location</th>
-    <th>Weather</th>
     <th>Home/Away</th>
     <th>Opponent</th>
   </tr>
 
   <tr data-lat="45.044" data-lon="-93.496"><td>8/31/2026</td><td>8:00 PM</td><td>9:30 PM</td>
       <td><a href="https://maps.google.com/?q=Wayzata+HS+Turf+3" target="_blank">Wayzata HS Turf 3</a></td>
-      <td class="weather"></td><td>Home</td><td>Maple Grove 8-2</td></tr>
+      <td>Home</td><td>Maple Grove 8-2</td></tr>
 
   <tr data-lat="45.105" data-lon="-93.496"><td>9/9/2026</td><td>8:00 PM</td><td>9:30 PM</td>
       <td><a href="https://maps.google.com/?q=Fernbrook+Athletic+Fields+1" target="_blank">Fernbrook Athletic Fields - 1</a></td>
-      <td class="weather"></td><td>Away</td><td>Maple Grove 8-1</td></tr>
+      </td><td>Away</td><td>Maple Grove 8-1</td></tr>
 
   <tr data-lat="45.105" data-lon="-93.496"><td>9/16/2026</td><td>8:00 PM</td><td>9:30 PM</td>
       <td><a href="https://maps.google.com/?q=Fernbrook+Athletic+Fields+2" target="_blank">Fernbrook Athletic Fields - 2</a></td>
-      <td class="weather"></td><td>Away</td><td>Maple Grove 8-3</td></tr>
+      </td><td>Away</td><td>Maple Grove 8-3</td></tr>
 
   <tr data-lat="44.913" data-lon="-93.503"><td>9/19/2026</td><td>5:00 PM</td><td>6:30 PM</td>
       <td><a href="https://maps.google.com/?q=MHS+Stadium+Field" target="_blank">MHS Stadium Field</a></td>
-      <td class="weather"></td><td>Away</td><td>Minnetonka 8-3</td></tr>
+      </td><td>Away</td><td>Minnetonka 8-3</td></tr>
 
   <tr data-lat="45.044" data-lon="-93.496"><td>9/26/2026</td><td>12:00 PM</td><td>1:30 PM</td>
       <td><a href="https://maps.google.com/?q=Wayzata+Central+MS" target="_blank">Wayzata Central MS</a></td>
-      <td class="weather"></td><td>Home</td><td>Minnetonka 8-4</td></tr>
+      </td><td>Home</td><td>Minnetonka 8-4</td></tr>
 
   <tr data-lat="45.044" data-lon="-93.496"><td>10/3/2026</td><td>12:00 PM</td><td>1:30 PM</td>
       <td><a href="https://maps.google.com/?q=Wayzata+Central+MS" target="_blank">Wayzata Central MS</a></td>
-      <td class="weather"></td><td>Home</td><td>Minnetonka 8-1</td></tr>
+      </td><td>Home</td><td>Minnetonka 8-1</td></tr>
 
   <tr data-lat="45.044" data-lon="-93.496"><td>10/6/2026</td><td>8:00 PM</td><td>9:30 PM</td>
       <td><a href="https://maps.google.com/?q=Wayzata+HS+Turf+1" target="_blank">Wayzata HS Turf 1</a></td>
-      <td class="weather"></td><td>Home</td><td>Hopkins 8-1</td></tr>
+      </td><td>Home</td><td>Hopkins 8-1</td></tr>
 
   <tr data-lat="44.913" data-lon="-93.503"><td>10/10/2026</td><td>4:30 PM</td><td>6:00 PM</td>
       <td><a href="https://maps.google.com/?q=MHS+Stadium+Field" target="_blank">MHS Stadium Field</a></td>
-      <td class="weather"></td><td>Away</td><td>Minnetonka 8-2</td></tr>
+      </td><td>Away</td><td>Minnetonka 8-2</td></tr>
 </table>
 
-<details>
-  <summary>Game Notes</summary>
-  <p>- Arrive 30 minutes early.</p>
-  <p>- Bring both jerseys.</p>
-  <p>- Weather updates posted on Team 8-2 Home.</p>
-  <p>- Stadium games may require extra parking time.</p>
-</details>
 
 <script>
   // Highlight next game + countdown
@@ -257,78 +239,14 @@
   updateCountdown();
   setInterval(updateCountdown, 60000);
 
-  // Weather Forecasts
-  async function loadWeather() {
-    const rows = document.querySelectorAll("#scheduleTable tr");
 
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      const lat = row.dataset.lat;
-      const lon = row.dataset.lon;
-
-      const dateText = row.children[0].innerText;
-      const timeText = row.children[1].innerText;
-      const gameDate = new Date(dateText + " " + timeText);
-
-      const isoDate = gameDate.toISOString().split("T")[0];
-
-      const url =
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-        `&hourly=temperature_2m,weathercode&timezone=America%2FChicago&start_date=${isoDate}&end_date=${isoDate}`;
-
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        const hours = data.hourly.time;
-        const temps = data.hourly.temperature_2m;
-        const codes = data.hourly.weathercode;
-
-        let closestIndex = 0;
-        let minDiff = Infinity;
-
-        for (let j = 0; j < hours.length; j++) {
-          const forecastTime = new Date(hours[j]);
-          const diff = Math.abs(forecastTime - gameDate);
-          if (diff < minDiff) {
-            minDiff = diff;
-            closestIndex = j;
-          }
-        }
-
-        const temp = temps[closestIndex];
-        const code = codes[closestIndex];
-
-        const conditions = {
-          0: "Clear",
-          1: "Mainly Clear",
-          2: "Partly Cloudy",
-          3: "Overcast",
-          45: "Fog",
-          48: "Depositing Rime Fog",
-          51: "Light Drizzle",
-          53: "Moderate Drizzle",
-          55: "Heavy Drizzle",
-          61: "Light Rain",
-          63: "Moderate Rain",
-          65: "Heavy Rain",
-          71: "Light Snow",
-          73: "Moderate Snow",
-          75: "Heavy Snow",
-          95: "Thunderstorm"
-        };
-
-        const weatherText = `${temp}°F — ${conditions[code] || "Unknown"}`;
-        row.querySelector(".weather").innerText = weatherText;
-
-      } catch (e) {
-        row.querySelector(".weather").innerText = "Weather unavailable";
-      }
-    }
-  }
-
-  loadWeather();
 </script>
+<a href="Wayzata_8-2_Football_Picker.html" class="back-btn">Back to Team 8-2 Home</a>
 
+<button class="print-btn" onclick="window.print()">Print Schedule</button>
+
+<a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID" class="yt-btn" target="_blank">
+  Watch Game Replays on YouTube
+</a>
 </body>
 </html>
