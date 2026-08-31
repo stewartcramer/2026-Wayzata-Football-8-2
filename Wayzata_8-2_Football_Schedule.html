@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wayzata Football 8-2 Schedule</title>
+
+<style>
+  :root {
+    --wayzata-blue: #002B5C;
+    --wayzata-gold: #FFC72C;
+    --white: #FFFFFF;
+    --row-alt: #003B75;
+    --highlight: #1E90FF;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--wayzata-blue);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    border: 6px solid var(--wayzata-gold);
+    padding-bottom: 40px;
+  }
+
+  .logo {
+    margin-top: 30px;
+    width: 260px;
+    max-width: 70%;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 2.6em;
+    color: var(--wayzata-gold);
+    margin: 20px 0 10px 0;
+    text-shadow: 2px 2px 4px #000;
+    text-align: center;
+  }
+
+  #countdown {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+    color: var(--white);
+    text-align: center;
+  }
+
+  .back-btn {
+    background-color: var(--wayzata-gold);
+    color: var(--wayzata-blue);
+    padding: 14px 22px;
+    font-size: 1.3em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .print-btn {
+    background-color: var(--white);
+    color: var(--wayzata-blue);
+    padding: 10px 18px;
+    font-size: 1.1em;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border: none;
+  }
+
+  .yt-btn {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+  }
+
+  table.schedule {
+    width: 95%;
+    max-width: 1100px;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: var(--wayzata-blue);
+    border: 4px solid var(--wayzata-gold);
+  }
+
+  table.schedule th {
+    background-color: var(--wayzata-gold);
+    color: var(--wayzata-blue);
+    padding: 14px;
+    font-size: 1.4em;
+    border-bottom: 4px solid var(--white);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  table.schedule td {
+    padding: 12px;
+    font-size: 1.25em;
+    border-bottom: 2px solid var(--white);
+    white-space: nowrap;
+  }
+
+  table.schedule tr:nth-child(even) td {
+    background-color: var(--row-alt);
+  }
+
+  .next-game {
+    background-color: var(--highlight) !important;
+    color: var(--white);
+    font-weight: bold;
+  }
+
+  .weather {
+    font-size: 1em;
+    margin-top: 6px;
+    color: var(--white);
+  }
+
+  details {
+    width: 95%;
+    max-width: 1100px;
+    margin-top: 30px;
+    background-color: var(--row-alt);
+    padding: 20px;
+    border: 3px solid var(--wayzata-gold);
+    border-radius: 8px;
+  }
+
+  summary {
+    font-size: 1.5em;
+    color: var(--wayzata-gold);
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<img src="wayzata_logo.png" alt="Wayzata Football Logo" class="logo">
+
+<h1>Wayzata Football 8-2 Schedule</h1>
+
+<div id="countdown">Loading next game countdown…</div>
+
+<a href="Wayzata_8-2_Football_Picker.html" class="back-btn">Back to Team 8-2 Home</a>
+
+<button class="print-btn" onclick="window.print()">Print Schedule</button>
+
+<a href="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID" class="yt-btn" target="_blank">
+  Watch Game Replays on YouTube
+</a>
+
+<table class="schedule" id="scheduleTable">
+  <tr>
+    <th>Date</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Location</th>
+    <th>Weather</th>
+    <th>Home/Away</th>
+    <th>Opponent</th>
+  </tr>
+
+  <tr data-lat="45.044" data-lon="-93.496"><td>8/31/2026</td><td>8:00 PM</td><td>9:30 PM</td>
+      <td><a href="https://maps.google.com/?q=Wayzata+HS+Turf+3" target="_blank">Wayzata HS Turf 3</a></td>
+      <td class="weather"></td><td>Home</td><td>Maple Grove 8-2</td></tr>
+
+  <tr data-lat="45.105" data-lon="-93.496"><td>9/9/2026</td><td>8:00 PM</td><td>9:30 PM</td>
+      <td><a href="https://maps.google.com/?q=Fernbrook+Athletic+Fields+1" target="_blank">Fernbrook Athletic Fields - 1</a></td>
+      <td class="weather"></td><td>Away</td><td>Maple Grove 8-1</td></tr>
+
+  <tr data-lat="45.105" data-lon="-93.496"><td>9/16/2026</td><td>8:00 PM</td><td>9:30 PM</td>
+      <td><a href="https://maps.google.com/?q=Fernbrook+Athletic+Fields+2" target="_blank">Fernbrook Athletic Fields - 2</a></td>
+      <td class="weather"></td><td>Away</td><td>Maple Grove 8-3</td></tr>
+
+  <tr data-lat="44.913" data-lon="-93.503"><td>9/19/2026</td><td>5:00 PM</td><td>6:30 PM</td>
+      <td><a href="https://maps.google.com/?q=MHS+Stadium+Field" target="_blank">MHS Stadium Field</a></td>
+      <td class="weather"></td><td>Away</td><td>Minnetonka 8-3</td></tr>
+
+  <tr data-lat="45.044" data-lon="-93.496"><td>9/26/2026</td><td>12:00 PM</td><td>1:30 PM</td>
+      <td><a href="https://maps.google.com/?q=Wayzata+Central+MS" target="_blank">Wayzata Central MS</a></td>
+      <td class="weather"></td><td>Home</td><td>Minnetonka 8-4</td></tr>
+
+  <tr data-lat="45.044" data-lon="-93.496"><td>10/3/2026</td><td>12:00 PM</td><td>1:30 PM</td>
+      <td><a href="https://maps.google.com/?q=Wayzata+Central+MS" target="_blank">Wayzata Central MS</a></td>
+      <td class="weather"></td><td>Home</td><td>Minnetonka 8-1</td></tr>
+
+  <tr data-lat="45.044" data-lon="-93.496"><td>10/6/2026</td><td>8:00 PM</td><td>9:30 PM</td>
+      <td><a href="https://maps.google.com/?q=Wayzata+HS+Turf+1" target="_blank">Wayzata HS Turf 1</a></td>
+      <td class="weather"></td><td>Home</td><td>Hopkins 8-1</td></tr>
+
+  <tr data-lat="44.913" data-lon="-93.503"><td>10/10/2026</td><td>4:30 PM</td><td>6:00 PM</td>
+      <td><a href="https://maps.google.com/?q=MHS+Stadium+Field" target="_blank">MHS Stadium Field</a></td>
+      <td class="weather"></td><td>Away</td><td>Minnetonka 8-2</td></tr>
+</table>
+
+<details>
+  <summary>Game Notes</summary>
+  <p>- Arrive 30 minutes early.</p>
+  <p>- Bring both jerseys.</p>
+  <p>- Weather updates posted on Team 8-2 Home.</p>
+  <p>- Stadium games may require extra parking time.</p>
+</details>
+
+<script>
+  // Highlight next game + countdown
+  const today = new Date();
+  const rows = document.querySelectorAll("#scheduleTable tr");
+  let nextGameDate = null;
+
+  for (let i = 1; i < rows.length; i++) {
+    const dateText = rows[i].children[0].innerText;
+    const timeText = rows[i].children[1].innerText;
+    const gameDate = new Date(dateText + " " + timeText);
+
+    if (gameDate >= today) {
+      rows[i].classList.add("next-game");
+      nextGameDate = gameDate;
+      break;
+    }
+  }
+
+  function updateCountdown() {
+    if (!nextGameDate) {
+      document.getElementById("countdown").innerText = "Season completed.";
+      return;
+    }
+
+    const now = new Date();
+    const diff = nextGameDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").innerText = "Game happening now!";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("countdown").innerText =
+      "Next Game: " + days + " days, " + hours + " hours, " + minutes + " minutes";
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
+  // Weather Forecasts
+  async function loadWeather() {
+    const rows = document.querySelectorAll("#scheduleTable tr");
+
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      const lat = row.dataset.lat;
+      const lon = row.dataset.lon;
+
+      const dateText = row.children[0].innerText;
+      const timeText = row.children[1].innerText;
+      const gameDate = new Date(dateText + " " + timeText);
+
+      const isoDate = gameDate.toISOString().split("T")[0];
+
+      const url =
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+        `&hourly=temperature_2m,weathercode&timezone=America%2FChicago&start_date=${isoDate}&end_date=${isoDate}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const hours = data.hourly.time;
+        const temps = data.hourly.temperature_2m;
+        const codes = data.hourly.weathercode;
+
+        let closestIndex = 0;
+        let minDiff = Infinity;
+
+        for (let j = 0; j < hours.length; j++) {
+          const forecastTime = new Date(hours[j]);
+          const diff = Math.abs(forecastTime - gameDate);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = j;
+          }
+        }
+
+        const temp = temps[closestIndex];
+        const code = codes[closestIndex];
+
+        const conditions = {
+          0: "Clear",
+          1: "Mainly Clear",
+          2: "Partly Cloudy",
+          3: "Overcast",
+          45: "Fog",
+          48: "Depositing Rime Fog",
+          51: "Light Drizzle",
+          53: "Moderate Drizzle",
+          55: "Heavy Drizzle",
+          61: "Light Rain",
+          63: "Moderate Rain",
+          65: "Heavy Rain",
+          71: "Light Snow",
+          73: "Moderate Snow",
+          75: "Heavy Snow",
+          95: "Thunderstorm"
+        };
+
+        const weatherText = `${temp}°F — ${conditions[code] || "Unknown"}`;
+        row.querySelector(".weather").innerText = weatherText;
+
+      } catch (e) {
+        row.querySelector(".weather").innerText = "Weather unavailable";
+      }
+    }
+  }
+
+  loadWeather();
+</script>
+
+</body>
+</html>
