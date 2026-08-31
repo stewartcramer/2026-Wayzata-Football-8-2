@@ -114,6 +114,12 @@
   table.schedule tr:nth-child(even) td {
     background-color: var(--row-alt);
   }
+  
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
   .next-game {
     background-color: var(--highlight) !important;
@@ -151,7 +157,7 @@
 <h1>Wayzata Football 8-2 Schedule</h1>
 
 <div id="countdown">Loading next game countdown…</div>
-
+<div class="table-container">
 <table class="schedule" id="scheduleTable">
   <tr>
     <th>Date</th>
@@ -194,7 +200,7 @@
       <td><a href="https://maps.google.com/?q=MHS+Stadium+Field" target="_blank">MHS Stadium Field</a></td>
       </td><td>Away</td><td>Minnetonka 8-2</td></tr>
 </table>
-
+</div>
 
 <script>
   // Highlight next game + countdown
