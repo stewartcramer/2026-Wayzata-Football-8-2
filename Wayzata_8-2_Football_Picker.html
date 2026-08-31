@@ -124,12 +124,21 @@ h1 {
     </a>
   </footer>
 <script>
-window.addEventListener("load", () => {
-    requestAnimationFrame(() => {
+history.scrollRestoration = "manual";
+
+window.addEventListener("load", function () {
+    // First frame after load
+    requestAnimationFrame(function () {
         window.scrollTo(0, 0);
     });
+
+    // Defensive second reset in case layout shifts
+    setTimeout(function () {
+        window.scrollTo(0, 0);
+    }, 200);
 });
 </script>
+
 
 </body>
 </html>
